@@ -1,7 +1,7 @@
 package Course2.Homeworks.HomeWork1;
 
 import java.awt.*;
-
+//
 public class Sprite {
     protected float x;
     protected float y;

@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
+//
 public class MainCircles extends JFrame {
     private static final int POS_X = 400;
     private static final int POS_Y = 200;

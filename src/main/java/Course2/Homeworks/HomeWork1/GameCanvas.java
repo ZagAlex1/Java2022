@@ -2,7 +2,7 @@ package Course2.Homeworks.HomeWork1;
 
 import javax.swing.*;
 import java.awt.*;
-
+//
 public class GameCanvas extends JPanel {
     private long lastFrameTime;
     private MainCircles controller;

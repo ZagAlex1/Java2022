@@ -2,7 +2,7 @@ package Course2.Homeworks.HomeWork1;
 
 import java.awt.*;
 import java.util.Random;
-
+//
 public class Ball extends Sprite {
     private static Random rnd = new Random();
     private final Color color;
