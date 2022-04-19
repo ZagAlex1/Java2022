@@ -4,10 +4,21 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Client extends JFrame implements ActionListener, Thread.UncaughtExceptionHandler {
     private static final int WIDTH = 400;
     private static final int HEIGHT = 300;
+
+    private FileWriter fileWriter;
+    {
+        try {
+            fileWriter = new FileWriter("textarea.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     private final JTextArea log = new JTextArea();
 
@@ -34,13 +45,15 @@ public class Client extends JFrame implements ActionListener, Thread.UncaughtExc
         log.setEditable(false);
         JScrollPane scLog = new JScrollPane(log);
         JScrollPane spUsers = new JScrollPane(userList);
-        String[] users = {"user1","user2",
-                "user3","user4","user5","user6",
-                "user7","user8","user9",
-                "user10","user11", };
+        String[] users = {"user1", "user2",
+                "user3", "user4", "user5", "user6",
+                "user7", "user8", "user9",
+                "user10", "user11",};
         userList.setListData(users);
-        spUsers.setPreferredSize(new Dimension(100,0));
+        spUsers.setPreferredSize(new Dimension(100, 0));
         cbAlwaysOnTop.addActionListener(this);
+        btnSend.addActionListener(this);
+        tfMessage.addActionListener(this);
 
         panelTop.add(tfIPAddress);
         panelTop.add(tfPort);
@@ -73,9 +86,27 @@ public class Client extends JFrame implements ActionListener, Thread.UncaughtExc
         Object src = e.getSource();
         if (src == cbAlwaysOnTop) {
             setAlwaysOnTop(cbAlwaysOnTop.isSelected());
+        } else if (src == tfMessage) {
+            addText();
+            textWrite();
+        } else if (src == btnSend) {
+            addText();
+            textWrite();
         } else {
             throw new RuntimeException("Action for component unimplemented:");
         }
+    }
+    public void textWrite() {
+        try {
+            log.write(fileWriter);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void addText(){
+        log.append(tfMessage.getText() + "\n");
+        tfMessage.setText(null);
     }
 
     @Override
@@ -87,4 +118,6 @@ public class Client extends JFrame implements ActionListener, Thread.UncaughtExc
         JOptionPane.showMessageDialog(null, msg,
                 "Exception", JOptionPane.ERROR_MESSAGE);
     }
+
+
 }

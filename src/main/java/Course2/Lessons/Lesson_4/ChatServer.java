@@ -6,6 +6,7 @@ public class ChatServer {
     }
 
     void stop() {
+
         System.out.println("Server stopped");
     }
 }
