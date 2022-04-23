@@ -1,4 +1,4 @@
-package Course2.Lessons.Lesson_4;
+package Course2.Lessons.Lesson_5.Chat;
 
 import javax.swing.*;
 import java.awt.*;
