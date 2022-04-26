@@ -23,6 +23,7 @@ public class ThreadMain {
         }
 
         void hello() {
+
             System.out.println("Hello " + Thread.currentThread().getName());
         }
     }
@@ -47,6 +48,7 @@ public class ThreadMain {
         Runnable r0 = new Runnable() {
             @Override
             public void run() {
+
                 incAll();
             }
         };
